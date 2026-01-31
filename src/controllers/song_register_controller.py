@@ -1,10 +1,11 @@
 class SongRegisterController:
   def insert(self, new_song_informations: dict) -> dict:
     try:
-      self.verify_songs_infos()
-      self.verify_if_song_already_registered()
-      self.insert_song()
-      return self.format_response()
+      self.__verify_songs_infos(new_song_informations)
+      self.__verify_if_song_already_registered(new_song_informations)
+      self.__insert_song(new_song_informations)
+      return self.__format_response(new_song_informations)
+    
     except Exception as exception:
       return self.__format_error_response(exception)
 
